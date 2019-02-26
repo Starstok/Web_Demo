@@ -1,0 +1,41 @@
+.custom-content-wrap {
+    background: #fff;
+}
+
+.custom-content-wrap {
+    overflow: hidden;
+    word-wrap: break-word;
+    zoom: 1;
+    width: 100%;
+}
+
+p {
+	margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* img {
+    border: 0;
+    display: inline;
+} */
+
+body .content-wrap * {
+    font-size: 12px;
+}
+
+body, table, td, div, p {
+    word-wrap: break-word;
+}
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, article, aside, details, dialog, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}

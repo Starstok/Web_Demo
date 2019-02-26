@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Music Play</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="./css/icon.css" type="text/css">
+</head>
+
+<body>
+    <div>
+        <h4 id="name"></h4>
+        <span id="m" class="m"></span>
+        <br/>
+        <br/>
+        <audio id="audio" src="./music/audio/NewDay.mp3"></audio>
+    </div>
+    <div>
+        <button id="btn-play">播放/暂停</button>
+        <!-- <a id="btn-play" href="javascript:;">播放/暂停</a> -->
+        <!-- <button id="btn-stop">暂停</button> -->
+        <button id="btn-pre">上一首</button>
+        <button id="btn-next">下一首</button>
+    </div>
+
+
+    <script>
+        //创建歌单
+        var music = new Array();
+        music = ["NewDay", "PLANET", "Pop It In 2", "She","The Script will.i.am - Hall of Fame","The Vamps - Rockabye","Tim Urban - Perfectly You"];//歌单 
+        var num = 0;
+
+        function status() {
+            var name = document.getElementById("name");
+            name.innerHTML = music[num];
+            var m = document.getElementById("m");
+            m.innerHTML = num+1 + "/"+ music.length + "首歌";
+        }
+
+        //播放
+        var btn1 = document.getElementById("btn-play");
+        btn1.onclick = function () {
+            if (audio.paused) {
+                audio.play();
+            }
+            //暂停
+            else if (audio.played) {
+                audio.pause();
+            }
+            status();
+        }
+
+        // //暂停 
+        // var btn2 = document.getElementById("btn-stop");
+        // btn2.onclick = function () {
+        //     if (audio.played) {
+        //         audio.pause();
+        //     }
+        // }
+
+        //上一首
+        var btn3 = document.getElementById("btn-pre");
+        btn3.onclick = function () {
+            num = (num - 1) % music.length;
+            if (num < 0) {
+                num = 0;
+                var name = document.getElementById("name");
+                name.innerHTML = "这是第一首";
+                //console.log(num);   
+            }
+            else {
+                audio.src = "music/audio/" + music[num] + ".mp3";
+                audio.play();
+                status();
+            }
+
+        }
+
+        //下一首 
+        var btn4 = document.getElementById("btn-next");
+        btn4.onclick = function () {
+            num = (num + 1) % music.length;
+            audio.src = "./music/audio/" + music[num] + ".mp3";
+            audio.play();
+            status();
+            //console.log(num);   
+        }
+
+        //自动播放下一首
+        audio.addEventListener('ended', function () {
+            btn4.onclick();
+        }, false); status();
+
+    </script>
+</body>
+
+</html>
